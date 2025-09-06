@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/rabbitTest")
 public class RabbitController {
 
+    final private RabbitSenderService rabbitSenderService;
+
     @Autowired
-    private RabbitSenderService rabbitSenderService;
+    public RabbitController(RabbitSenderService rabbitSenderService){
+        this.rabbitSenderService = rabbitSenderService;
+    }
 
     @GetMapping("/send")
     public String enviar(@RequestParam String mensagem) {
